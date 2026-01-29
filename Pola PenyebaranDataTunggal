@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pola Penyebaran Data Tunggal - Matematika SMK Kelas XI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .title-font {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+    }
+    
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+    }
+    
+    .accordion-content.open {
+      max-height: 2000px;
+    }
+    
+    .pulse-btn {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+      50% { box-shadow: 0 0 0 15px rgba(102, 126, 234, 0); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .formula-box {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      border-left: 4px solid #667eea;
+    }
+    
+    .tip-box {
+      background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+      border-left: 4px solid #ffc107;
+    }
+    
+    .example-box {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      border-left: 4px solid #4caf50;
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .difficulty-easy { border-color: #4caf50; background-color: #e8f5e9; }
+    .difficulty-medium { border-color: #ff9800; background-color: #fff3e0; }
+    .difficulty-hard { border-color: #f44336; background-color: #ffebee; }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto bg-gradient-to-br from-blue-50 via-teal-50 to-green-50"><!-- Navigation -->
+   <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2"><span class="text-2xl">📊</span> <span class="font-bold text-indigo-600 hidden sm:block">Matematika SMK XI</span>
+      </div>
+      <div class="flex items-center gap-4 sm:gap-6 text-sm"><a href="#materi" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Materi</a> <a href="#contoh" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Contoh</a> <a href="#tips" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Tips</a>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <header class="relative py-12 sm:py-20 px-4 overflow-hidden">
+    <div class="absolute top-10 right-10 text-6xl sm:text-8xl opacity-10 float-animation">
+     📈
+    </div>
+    <div class="absolute bottom-10 left-10 text-4xl sm:text-6xl opacity-10 float-animation" style="animation-delay: 1s;">
+     📉
+    </div>
+    <div class="max-w-4xl mx-auto text-center relative z-10"><span class="inline-block px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium mb-4"> 📚 Kelas XI SMK - Matematika </span>
+     <h1 id="main-title" class="title-font text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gradient-text leading-tight">Pola Penyebaran Data Tunggal</h1>
+     <p id="subtitle" class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">Memahami ukuran pemusatan dan penyebaran data untuk menganalisis informasi dalam kehidupan sehari-hari</p>
+     <div class="flex flex-wrap justify-center gap-4 mt-8"><a href="#materi" class="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl font-medium hover:shadow-lg transition-all hover:scale-105"> Mulai Belajar 🚀 </a> <a href="https://rina.github.io/mtk/penyebaran data tunggal.html" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-white border-2 border-indigo-500 text-indigo-600 rounded-xl font-medium hover:bg-indigo-50 transition-all pulse-btn"> Kuis Interaktif 📝 </a>
+     </div>
+    </div>
+   </header><!-- Main Content -->
+   <main class="max-w-6xl mx-auto px-4 pb-20"><!-- Pengantar Section -->
+    <section id="materi" class="mb-16">
+     <div class="bg-white rounded-3xl shadow-xl p-6 sm:p-10 card-hover">
+      <div class="flex items-center gap-3 mb-6"><span class="text-3xl">🎯</span>
+       <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Apa itu Pola Penyebaran Data?</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+       <div>
+        <p class="text-gray-600 leading-relaxed mb-4">Pernahkah kamu bertanya-tanya mengapa nilai ulangan di kelasmu ada yang tinggi dan ada yang rendah? Atau mengapa harga beras di berbagai toko berbeda-beda? 🤔</p>
+        <p class="text-gray-600 leading-relaxed mb-4"><strong>Pola penyebaran data</strong> membantu kita memahami bagaimana data tersebar dari nilai rata-ratanya. Ini sangat berguna untuk:</p>
+        <ul class="space-y-2 text-gray-600">
+         <li class="flex items-start gap-2"><span class="text-green-500 mt-1">✓</span> <span>Menganalisis nilai ujian siswa</span></li>
+         <li class="flex items-start gap-2"><span class="text-green-500 mt-1">✓</span> <span>Membandingkan harga produk di pasar</span></li>
+         <li class="flex items-start gap-2"><span class="text-green-500 mt-1">✓</span> <span>Mengevaluasi kinerja karyawan</span></li>
+         <li class="flex items-start gap-2"><span class="text-green-500 mt-1">✓</span> <span>Mengukur konsistensi produksi</span></li>
+        </ul>
+       </div>
+       <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl p-6 flex items-center justify-center">
+        <div class="text-center">
+         <div class="text-6xl mb-4">
+          📊
+         </div>
+         <p class="text-indigo-700 font-medium">Data Tunggal = Data yang belum dikelompokkan dalam interval kelas</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Ukuran Pemusatan -->
+    <section class="mb-16">
+     <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-8 flex items-center gap-3"><span class="text-3xl">📍</span> Ukuran Pemusatan Data</h2>
+     <div class="grid md:grid-cols-3 gap-6"><!-- Mean -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border-t-4 border-indigo-500">
+       <div class="text-4xl mb-4">
+        📐
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-3">Mean (Rata-rata)</h3>
+       <p class="text-gray-600 text-sm mb-4">Jumlah semua data dibagi banyaknya data. Paling sering digunakan!</p>
+       <div class="formula-box p-4 rounded-lg">
+        <p class="text-center font-mono text-lg">x̄ = Σxᵢ / n</p>
+       </div>
+       <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+        <p class="text-sm text-blue-700"><strong>Contoh:</strong> Nilai 7, 8, 9<br>
+          Mean = (7+8+9)/3 = <strong>8</strong></p>
+       </div>
+      </div><!-- Median -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border-t-4 border-purple-500">
+       <div class="text-4xl mb-4">
+        🎯
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-3">Median (Nilai Tengah)</h3>
+       <p class="text-gray-600 text-sm mb-4">Nilai yang membagi data menjadi dua bagian sama besar setelah diurutkan.</p>
+       <div class="formula-box p-4 rounded-lg">
+        <p class="text-center text-sm"><strong>n ganjil:</strong> Data ke-(n+1)/2<br><strong>n genap:</strong> Rata-rata 2 data tengah</p>
+       </div>
+       <div class="mt-4 p-3 bg-purple-50 rounded-lg">
+        <p class="text-sm text-purple-700"><strong>Contoh:</strong> 5, 7, <u>8</u>, 9, 10<br>
+          Median = <strong>8</strong></p>
+       </div>
+      </div><!-- Modus -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border-t-4 border-pink-500">
+       <div class="text-4xl mb-4">
+        🏆
+       </div>
+       <h3 class="text-xl font-bold text-gray-800 mb-3">Modus (Nilai Terbanyak)</h3>
+       <p class="text-gray-600 text-sm mb-4">Nilai yang paling sering muncul dalam data. Bisa lebih dari satu!</p>
+       <div class="formula-box p-4 rounded-lg">
+        <p class="text-center text-sm">Cari nilai dengan<br>
+         frekuensi tertinggi</p>
+       </div>
+       <div class="mt-4 p-3 bg-pink-50 rounded-lg">
+        <p class="text-sm text-pink-700"><strong>Contoh:</strong> 5, <strong>7</strong>, <strong>7</strong>, 8, <strong>7</strong>, 9<br>
+          Modus = <strong>7</strong> (muncul 3x)</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Ukuran Penyebaran -->
+    <section class="mb-16">
+     <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-8 flex items-center gap-3"><span class="text-3xl">📏</span> Ukuran Penyebaran Data</h2>
+     <div class="grid md:grid-cols-2 gap-6"><!-- Jangkauan -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+       <div class="flex items-center gap-3 mb-4"><span class="text-3xl">↔️</span>
+        <h3 class="text-xl font-bold text-gray-800">Jangkauan (Range)</h3>
+       </div>
+       <p class="text-gray-600 mb-4">Selisih antara nilai terbesar dan terkecil. Ukuran penyebaran paling sederhana!</p>
+       <div class="formula-box p-4 rounded-lg mb-4">
+        <p class="text-center font-mono text-lg">R = X<sub>maks</sub> - X<sub>min</sub></p>
+       </div>
+       <div class="example-box p-4 rounded-lg">
+        <p class="text-sm text-green-800"><strong>🛒 Contoh Nyata:</strong> Harga cabai di 5 pasar: Rp25.000, Rp28.000, Rp30.000, Rp32.000, Rp35.000<br>
+          Jangkauan = 35.000 - 25.000 = <strong>Rp10.000</strong></p>
+       </div>
+      </div><!-- Simpangan Rata-rata -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+       <div class="flex items-center gap-3 mb-4"><span class="text-3xl">📊</span>
+        <h3 class="text-xl font-bold text-gray-800">Simpangan Rata-rata</h3>
+       </div>
+       <p class="text-gray-600 mb-4">Rata-rata dari selisih mutlak setiap data dengan mean.</p>
+       <div class="formula-box p-4 rounded-lg mb-4">
+        <p class="text-center font-mono">SR = Σ|xᵢ - x̄| / n</p>
+       </div>
+       <div class="example-box p-4 rounded-lg">
+        <p class="text-sm text-green-800"><strong>📝 Contoh Nyata:</strong> Nilai ulangan: 6, 7, 8, 9, 10 (Mean = 8)<br>
+          SR = (|6-8|+|7-8|+|8-8|+|9-8|+|10-8|)/5 = 6/5 = <strong>1,2</strong></p>
+       </div>
+      </div><!-- Ragam/Variansi -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+       <div class="flex items-center gap-3 mb-4"><span class="text-3xl">🔢</span>
+        <h3 class="text-xl font-bold text-gray-800">Ragam (Variansi)</h3>
+       </div>
+       <p class="text-gray-600 mb-4">Rata-rata dari kuadrat selisih setiap data dengan mean.</p>
+       <div class="formula-box p-4 rounded-lg mb-4">
+        <p class="text-center font-mono">S² = Σ(xᵢ - x̄)² / n</p>
+       </div>
+       <div class="tip-box p-4 rounded-lg">
+        <p class="text-sm text-yellow-800"><strong>💡 Catatan:</strong> Variansi menggunakan kuadrat agar selisih negatif dan positif tidak saling menghilangkan!</p>
+       </div>
+      </div><!-- Simpangan Baku -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+       <div class="flex items-center gap-3 mb-4"><span class="text-3xl">📈</span>
+        <h3 class="text-xl font-bold text-gray-800">Simpangan Baku (Std Dev)</h3>
+       </div>
+       <p class="text-gray-600 mb-4">Akar kuadrat dari variansi. Ukuran penyebaran paling populer!</p>
+       <div class="formula-box p-4 rounded-lg mb-4">
+        <p class="text-center font-mono">S = √(Σ(xᵢ - x̄)² / n)</p>
+       </div>
+       <div class="tip-box p-4 rounded-lg">
+        <p class="text-sm text-yellow-800"><strong>💡 Keunggulan:</strong> Satuannya sama dengan data asli, berbeda dengan variansi yang satuannya kuadrat.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Contoh Soal Section -->
+    <section id="contoh" class="mb-16">
+     <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-8 flex items-center gap-3"><span class="text-3xl">✏️</span> Contoh Soal &amp; Pembahasan</h2>
+     <div class="space-y-4"><!-- Soal 1 - Mudah -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden"><button onclick="toggleAccordion(this)" class="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+        <div class="flex items-center gap-4"><span class="px-3 py-1 text-xs font-bold rounded-full difficulty-easy border-2">MUDAH</span> <span class="font-semibold text-gray-800">Soal 1: Menghitung Mean &amp; Median</span>
+        </div>
+        <svg class="w-6 h-6 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg></button>
+       <div class="accordion-content">
+        <div class="p-6 border-t bg-gray-50">
+         <div class="mb-4 p-4 bg-blue-50 rounded-xl">
+          <p class="text-gray-800"><strong>🏪 Soal:</strong> Pak Budi mencatat jumlah pelanggan tokonya selama 7 hari: <strong>15, 18, 20, 22, 17, 19, 23</strong> orang. Tentukan mean dan median data tersebut!</p>
+         </div>
+         <div class="space-y-4">
+          <div class="p-4 bg-white rounded-xl border-l-4 border-indigo-500">
+           <h4 class="font-bold text-indigo-600 mb-2">📝 Penyelesaian Mean:</h4>
+           <p class="text-gray-700">x̄ = (15 + 18 + 20 + 22 + 17 + 19 + 23) / 7<br>
+             x̄ = 134 / 7<br><strong>x̄ = 19,14 pelanggan</strong></p>
+          </div>
+          <div class="p-4 bg-white rounded-xl border-l-4 border-purple-500">
+           <h4 class="font-bold text-purple-600 mb-2">📝 Penyelesaian Median:</h4>
+           <p class="text-gray-700">1. Urutkan data: 15, 17, 18, <u>19</u>, 20, 22, 23<br>
+             2. n = 7 (ganjil), maka median = data ke-(7+1)/2 = data ke-4<br><strong>Median = 19 pelanggan</strong></p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soal 2 - Mudah -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden"><button onclick="toggleAccordion(this)" class="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+        <div class="flex items-center gap-4"><span class="px-3 py-1 text-xs font-bold rounded-full difficulty-easy border-2">MUDAH</span> <span class="font-semibold text-gray-800">Soal 2: Menentukan Modus &amp; Jangkauan</span>
+        </div>
+        <svg class="w-6 h-6 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg></button>
+       <div class="accordion-content">
+        <div class="p-6 border-t bg-gray-50">
+         <div class="mb-4 p-4 bg-blue-50 rounded-xl">
+          <p class="text-gray-800"><strong>👟 Soal:</strong> Data ukuran sepatu yang terjual di toko Andi: <strong>38, 40, 42, 40, 39, 40, 41, 42, 40, 38</strong>. Tentukan modus dan jangkauan!</p>
+         </div>
+         <div class="space-y-4">
+          <div class="p-4 bg-white rounded-xl border-l-4 border-pink-500">
+           <h4 class="font-bold text-pink-600 mb-2">📝 Penyelesaian Modus:</h4>
+           <p class="text-gray-700">Hitung frekuensi:<br>
+             • 38 → 2 kali<br>
+             • 39 → 1 kali<br>
+             • <strong>40 → 4 kali</strong> ← terbanyak!<br>
+             • 41 → 1 kali<br>
+             • 42 → 2 kali<br><strong>Modus = 40</strong></p>
+          </div>
+          <div class="p-4 bg-white rounded-xl border-l-4 border-green-500">
+           <h4 class="font-bold text-green-600 mb-2">📝 Penyelesaian Jangkauan:</h4>
+           <p class="text-gray-700">R = X<sub>maks</sub> - X<sub>min</sub><br>
+             R = 42 - 38<br><strong>R = 4</strong></p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soal 3 - Sedang -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden"><button onclick="toggleAccordion(this)" class="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+        <div class="flex items-center gap-4"><span class="px-3 py-1 text-xs font-bold rounded-full difficulty-medium border-2">SEDANG</span> <span class="font-semibold text-gray-800">Soal 3: Simpangan Rata-rata</span>
+        </div>
+        <svg class="w-6 h-6 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg></button>
+       <div class="accordion-content">
+        <div class="p-6 border-t bg-gray-50">
+         <div class="mb-4 p-4 bg-blue-50 rounded-xl">
+          <p class="text-gray-800"><strong>⏱️ Soal:</strong> Waktu tempuh 5 siswa dari rumah ke sekolah (menit): <strong>10, 15, 20, 25, 30</strong>. Hitunglah simpangan rata-ratanya!</p>
+         </div>
+         <div class="p-4 bg-white rounded-xl border-l-4 border-orange-500">
+          <h4 class="font-bold text-orange-600 mb-2">📝 Penyelesaian:</h4>
+          <p class="text-gray-700"><strong>Langkah 1:</strong> Hitung mean<br>
+            x̄ = (10 + 15 + 20 + 25 + 30) / 5 = 100/5 = 20<br><br><strong>Langkah 2:</strong> Hitung |xᵢ - x̄| untuk setiap data<br></p>
+          <div class="overflow-x-auto my-3">
+           <table class="w-full text-sm border-collapse">
+            <thead>
+             <tr class="bg-orange-100">
+              <th class="border p-2">xᵢ</th>
+              <th class="border p-2">xᵢ - x̄</th>
+              <th class="border p-2">|xᵢ - x̄|</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+              <td class="border p-2 text-center">10</td>
+              <td class="border p-2 text-center">-10</td>
+              <td class="border p-2 text-center">10</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">15</td>
+              <td class="border p-2 text-center">-5</td>
+              <td class="border p-2 text-center">5</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">20</td>
+              <td class="border p-2 text-center">0</td>
+              <td class="border p-2 text-center">0</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">25</td>
+              <td class="border p-2 text-center">5</td>
+              <td class="border p-2 text-center">5</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">30</td>
+              <td class="border p-2 text-center">10</td>
+              <td class="border p-2 text-center">10</td>
+             </tr>
+             <tr class="bg-orange-100 font-bold">
+              <td class="border p-2 text-center" colspan="2">Jumlah</td>
+              <td class="border p-2 text-center">30</td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+          <p class="text-gray-700"><strong>Langkah 3:</strong> Hitung SR<br>
+            SR = 30 / 5 = <strong>6 menit</strong></p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soal 4 - Sedang -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden"><button onclick="toggleAccordion(this)" class="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+        <div class="flex items-center gap-4"><span class="px-3 py-1 text-xs font-bold rounded-full difficulty-medium border-2">SEDANG</span> <span class="font-semibold text-gray-800">Soal 4: Variansi Data</span>
+        </div>
+        <svg class="w-6 h-6 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg></button>
+       <div class="accordion-content">
+        <div class="p-6 border-t bg-gray-50">
+         <div class="mb-4 p-4 bg-blue-50 rounded-xl">
+          <p class="text-gray-800"><strong>📱 Soal:</strong> Jumlah pesan WhatsApp yang diterima Ani selama 6 hari: <strong>12, 8, 15, 10, 11, 10</strong>. Hitunglah variansi data tersebut!</p>
+         </div>
+         <div class="p-4 bg-white rounded-xl border-l-4 border-blue-500">
+          <h4 class="font-bold text-blue-600 mb-2">📝 Penyelesaian:</h4>
+          <p class="text-gray-700"><strong>Langkah 1:</strong> Hitung mean<br>
+            x̄ = (12 + 8 + 15 + 10 + 11 + 10) / 6 = 66/6 = 11<br><br><strong>Langkah 2:</strong> Hitung (xᵢ - x̄)²<br></p>
+          <div class="overflow-x-auto my-3">
+           <table class="w-full text-sm border-collapse">
+            <thead>
+             <tr class="bg-blue-100">
+              <th class="border p-2">xᵢ</th>
+              <th class="border p-2">xᵢ - x̄</th>
+              <th class="border p-2">(xᵢ - x̄)²</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+              <td class="border p-2 text-center">12</td>
+              <td class="border p-2 text-center">1</td>
+              <td class="border p-2 text-center">1</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">8</td>
+              <td class="border p-2 text-center">-3</td>
+              <td class="border p-2 text-center">9</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">15</td>
+              <td class="border p-2 text-center">4</td>
+              <td class="border p-2 text-center">16</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">10</td>
+              <td class="border p-2 text-center">-1</td>
+              <td class="border p-2 text-center">1</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">11</td>
+              <td class="border p-2 text-center">0</td>
+              <td class="border p-2 text-center">0</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">10</td>
+              <td class="border p-2 text-center">-1</td>
+              <td class="border p-2 text-center">1</td>
+             </tr>
+             <tr class="bg-blue-100 font-bold">
+              <td class="border p-2 text-center" colspan="2">Jumlah</td>
+              <td class="border p-2 text-center">28</td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+          <p class="text-gray-700"><strong>Langkah 3:</strong> Hitung Variansi<br>
+            S² = 28 / 6 = <strong>4,67</strong></p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soal 5 - Sulit -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden"><button onclick="toggleAccordion(this)" class="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+        <div class="flex items-center gap-4"><span class="px-3 py-1 text-xs font-bold rounded-full difficulty-hard border-2">SULIT</span> <span class="font-semibold text-gray-800">Soal 5: Simpangan Baku Lengkap</span>
+        </div>
+        <svg class="w-6 h-6 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg></button>
+       <div class="accordion-content">
+        <div class="p-6 border-t bg-gray-50">
+         <div class="mb-4 p-4 bg-blue-50 rounded-xl">
+          <p class="text-gray-800"><strong>🏭 Soal:</strong> Berat produk (gram) dari mesin A: <strong>498, 502, 500, 504, 496, 500, 503, 497</strong>. Hitung mean, variansi, dan simpangan baku untuk mengevaluasi konsistensi mesin!</p>
+         </div>
+         <div class="p-4 bg-white rounded-xl border-l-4 border-red-500">
+          <h4 class="font-bold text-red-600 mb-2">📝 Penyelesaian Lengkap:</h4>
+          <p class="text-gray-700 mb-3"><strong>Langkah 1:</strong> Hitung mean<br>
+            x̄ = (498+502+500+504+496+500+503+497) / 8<br>
+            x̄ = 4000 / 8 = <strong>500 gram</strong></p>
+          <div class="overflow-x-auto my-3">
+           <table class="w-full text-sm border-collapse">
+            <thead>
+             <tr class="bg-red-100">
+              <th class="border p-2">xᵢ</th>
+              <th class="border p-2">xᵢ - x̄</th>
+              <th class="border p-2">(xᵢ - x̄)²</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+              <td class="border p-2 text-center">498</td>
+              <td class="border p-2 text-center">-2</td>
+              <td class="border p-2 text-center">4</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">502</td>
+              <td class="border p-2 text-center">2</td>
+              <td class="border p-2 text-center">4</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">500</td>
+              <td class="border p-2 text-center">0</td>
+              <td class="border p-2 text-center">0</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">504</td>
+              <td class="border p-2 text-center">4</td>
+              <td class="border p-2 text-center">16</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">496</td>
+              <td class="border p-2 text-center">-4</td>
+              <td class="border p-2 text-center">16</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">500</td>
+              <td class="border p-2 text-center">0</td>
+              <td class="border p-2 text-center">0</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">503</td>
+              <td class="border p-2 text-center">3</td>
+              <td class="border p-2 text-center">9</td>
+             </tr>
+             <tr>
+              <td class="border p-2 text-center">497</td>
+              <td class="border p-2 text-center">-3</td>
+              <td class="border p-2 text-center">9</td>
+             </tr>
+             <tr class="bg-red-100 font-bold">
+              <td class="border p-2 text-center" colspan="2">Jumlah</td>
+              <td class="border p-2 text-center">58</td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+          <p class="text-gray-700"><strong>Langkah 2:</strong> Hitung Variansi<br>
+            S² = 58 / 8 = <strong>7,25</strong><br><br><strong>Langkah 3:</strong> Hitung Simpangan Baku<br>
+            S = √7,25 = <strong>2,69 gram</strong><br><br><strong>📊 Kesimpulan:</strong> Mesin cukup konsisten karena simpangan baku kecil (2,69 gram dari rata-rata 500 gram = 0,54%)</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soal 6 - Sulit -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden"><button onclick="toggleAccordion(this)" class="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+        <div class="flex items-center gap-4"><span class="px-3 py-1 text-xs font-bold rounded-full difficulty-hard border-2">SULIT</span> <span class="font-semibold text-gray-800">Soal 6: Perbandingan Dua Data</span>
+        </div>
+        <svg class="w-6 h-6 text-gray-400 transform transition-transform accordion-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg></button>
+       <div class="accordion-content">
+        <div class="p-6 border-t bg-gray-50">
+         <div class="mb-4 p-4 bg-blue-50 rounded-xl">
+          <p class="text-gray-800"><strong>🎓 Soal:</strong> Nilai ulangan Matematika dua kelas:<br><strong>Kelas A:</strong> 70, 75, 80, 85, 90<br><strong>Kelas B:</strong> 60, 70, 80, 90, 100<br>
+            Kelas mana yang nilainya lebih konsisten?</p>
+         </div>
+         <div class="grid md:grid-cols-2 gap-4">
+          <div class="p-4 bg-white rounded-xl border-l-4 border-indigo-500">
+           <h4 class="font-bold text-indigo-600 mb-2">📝 Kelas A:</h4>
+           <p class="text-gray-700 text-sm">x̄ = 400/5 = <strong>80</strong><br><br>
+             (xᵢ - x̄)²: 100, 25, 0, 25, 100<br>
+             Σ(xᵢ - x̄)² = 250<br>
+             S² = 250/5 = 50<br><strong>S = √50 ≈ 7,07</strong></p>
+          </div>
+          <div class="p-4 bg-white rounded-xl border-l-4 border-purple-500">
+           <h4 class="font-bold text-purple-600 mb-2">📝 Kelas B:</h4>
+           <p class="text-gray-700 text-sm">x̄ = 400/5 = <strong>80</strong><br><br>
+             (xᵢ - x̄)²: 400, 100, 0, 100, 400<br>
+             Σ(xᵢ - x̄)² = 1000<br>
+             S² = 1000/5 = 200<br><strong>S = √200 ≈ 14,14</strong></p>
+          </div>
+         </div>
+         <div class="mt-4 p-4 bg-green-100 rounded-xl">
+          <p class="text-green-800"><strong>✅ Kesimpulan:</strong> Meski mean sama (80), <strong>Kelas A lebih konsisten</strong> karena simpangan bakunya lebih kecil (7,07 &lt; 14,14). Nilai Kelas B lebih tersebar/bervariasi.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Tips Section -->
+    <section id="tips" class="mb-16">
+     <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-8 flex items-center gap-3"><span class="text-3xl">💡</span> Tips &amp; Trik Menjawab Soal</h2>
+     <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6 border-2 border-yellow-200">
+       <h3 class="font-bold text-xl text-orange-700 mb-4 flex items-center gap-2"><span>🎯</span> Trik Cepat Mean</h3>
+       <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start gap-2"><span class="text-orange-500 font-bold">1.</span> <span>Jika data berurutan dengan selisih sama (deret aritmatika), <strong>mean = (data pertama + data terakhir) / 2</strong></span></li>
+        <li class="flex items-start gap-2"><span class="text-orange-500 font-bold">2.</span> <span>Gunakan kalkulator untuk data banyak, jangan hitung manual!</span></li>
+        <li class="flex items-start gap-2"><span class="text-orange-500 font-bold">3.</span> <span>Perkirakan dulu jawabannya untuk cek perhitungan</span></li>
+       </ul>
+      </div>
+      <div class="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-6 border-2 border-green-200">
+       <h3 class="font-bold text-xl text-green-700 mb-4 flex items-center gap-2"><span>📍</span> Trik Cepat Median</h3>
+       <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start gap-2"><span class="text-green-500 font-bold">1.</span> <span><strong>SELALU urutkan data terlebih dahulu!</strong> Ini langkah wajib.</span></li>
+        <li class="flex items-start gap-2"><span class="text-green-500 font-bold">2.</span> <span>n ganjil: ambil data tengah langsung</span></li>
+        <li class="flex items-start gap-2"><span class="text-green-500 font-bold">3.</span> <span>n genap: rata-ratakan 2 data tengah</span></li>
+       </ul>
+      </div>
+      <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-purple-200">
+       <h3 class="font-bold text-xl text-purple-700 mb-4 flex items-center gap-2"><span>🔢</span> Trik Variansi &amp; Simpangan Baku</h3>
+       <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start gap-2"><span class="text-purple-500 font-bold">1.</span> <span>Buat tabel untuk menghitung sistematis: xᵢ | xᵢ-x̄ | (xᵢ-x̄)²</span></li>
+        <li class="flex items-start gap-2"><span class="text-purple-500 font-bold">2.</span> <span>Σ(xᵢ-x̄) <strong>SELALU = 0</strong> (untuk cek perhitungan)</span></li>
+        <li class="flex items-start gap-2"><span class="text-purple-500 font-bold">3.</span> <span>Simpangan baku = √Variansi (jangan lupa akar!)</span></li>
+       </ul>
+      </div>
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border-2 border-blue-200">
+       <h3 class="font-bold text-xl text-blue-700 mb-4 flex items-center gap-2"><span>⚡</span> Trik Umum</h3>
+       <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">1.</span> <span><strong>Simpangan baku kecil</strong> = data konsisten/seragam</span></li>
+        <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">2.</span> <span><strong>Simpangan baku besar</strong> = data bervariasi/tersebar</span></li>
+        <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">3.</span> <span>Bandingkan simpangan baku, bukan variansi (satuannya beda!)</span></li>
+       </ul>
+      </div>
+     </div><!-- Rumus Ringkas -->
+     <div class="mt-8 bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+      <h3 class="font-bold text-xl text-gray-800 mb-6 flex items-center gap-2"><span>📋</span> Ringkasan Rumus</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+       <div class="p-4 bg-indigo-50 rounded-xl text-center">
+        <p class="font-bold text-indigo-600 mb-1">Mean</p>
+        <p class="font-mono">x̄ = Σxᵢ / n</p>
+       </div>
+       <div class="p-4 bg-purple-50 rounded-xl text-center">
+        <p class="font-bold text-purple-600 mb-1">Median (n ganjil)</p>
+        <p class="font-mono">X<sub>(n+1)/2</sub></p>
+       </div>
+       <div class="p-4 bg-pink-50 rounded-xl text-center">
+        <p class="font-bold text-pink-600 mb-1">Modus</p>
+        <p class="text-sm">Nilai frekuensi terbanyak</p>
+       </div>
+       <div class="p-4 bg-green-50 rounded-xl text-center">
+        <p class="font-bold text-green-600 mb-1">Jangkauan</p>
+        <p class="font-mono">R = X<sub>maks</sub> - X<sub>min</sub></p>
+       </div>
+       <div class="p-4 bg-orange-50 rounded-xl text-center">
+        <p class="font-bold text-orange-600 mb-1">Variansi</p>
+        <p class="font-mono">S² = Σ(xᵢ-x̄)² / n</p>
+       </div>
+       <div class="p-4 bg-red-50 rounded-xl text-center">
+        <p class="font-bold text-red-600 mb-1">Simpangan Baku</p>
+        <p class="font-mono">S = √S²</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- CTA Section -->
+    <section class="mb-16">
+     <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 sm:p-12 text-center text-white">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Siap Menguji Pemahamanmu? 🚀</h2>
+      <p class="text-indigo-100 mb-8 max-w-xl mx-auto">Setelah mempelajari materi dan contoh soal, saatnya mengerjakan kuis untuk mengukur pemahamanmu!</p><a href="https://rina.github.io/mtk/penyebaran data tunggal.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-indigo-600 rounded-xl font-bold text-lg hover:shadow-xl transition-all hover:scale-105 pulse-btn"> <span>📝</span> Mulai Kuis Sekarang 
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+       </svg></a>
+     </div>
+    </section>
+   </main><!-- Footer -->
+   <footer class="bg-gray-900 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+     <div class="flex items-center justify-center gap-2 mb-4"><span class="text-2xl">📊</span> <span class="font-bold text-lg">Matematika SMK Kelas XI</span>
+     </div>
+     <p class="text-gray-400 mb-2">Pola Penyebaran Data Tunggal</p>
+     <p id="footer-text" class="text-indigo-400 font-medium">by @rina</p>
+     <div class="mt-6 pt-6 border-t border-gray-800 text-gray-500 text-sm">
+      <p>© 2024 - Materi Pembelajaran Interaktif</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      main_title: 'Pola Penyebaran Data Tunggal',
+      subtitle: 'Memahami ukuran pemusatan dan penyebaran data untuk menganalisis informasi dalam kehidupan sehari-hari',
+      footer_text: 'by @rina',
+      primary_color: '#667eea',
+      secondary_color: '#764ba2',
+      background_color: '#f5f7fa',
+      text_color: '#1f2937',
+      accent_color: '#ffc107'
+    };
+
+    let config = { ...defaultConfig };
+
+    // Accordion functionality
+    function toggleAccordion(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('.accordion-icon');
+      const isOpen = content.classList.contains('open');
+      
+      // Close all accordions first
+      document.querySelectorAll('.accordion-content').forEach(acc => {
+        acc.classList.remove('open');
+      });
+      document.querySelectorAll('.accordion-icon').forEach(ic => {
+        ic.style.transform = 'rotate(0deg)';
+      });
+      
+      // Open clicked one if it was closed
+      if (!isOpen) {
+        content.classList.add('open');
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Element SDK integration
+    async function onConfigChange(newConfig) {
+      const titleEl = document.getElementById('main-title');
+      const subtitleEl = document.getElementById('subtitle');
+      const footerEl = document.getElementById('footer-text');
+
+      if (titleEl) titleEl.textContent = newConfig.main_title || defaultConfig.main_title;
+      if (subtitleEl) subtitleEl.textContent = newConfig.subtitle || defaultConfig.subtitle;
+      if (footerEl) footerEl.textContent = newConfig.footer_text || defaultConfig.footer_text;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || 'Poppins',
+          set: (value) => {
+            config.font_family = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || 16,
+          set: (value) => {
+            config.font_size = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['main_title', config.main_title || defaultConfig.main_title],
+        ['subtitle', config.subtitle || defaultConfig.subtitle],
+        ['footer_text', config.footer_text || defaultConfig.footer_text]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c55dbce424c3541',t:'MTc2OTY1OTYwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
